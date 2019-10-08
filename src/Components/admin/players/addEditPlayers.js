@@ -74,6 +74,7 @@ class AddEditPlayers extends Component {
                         {key:"Midfield",value:"Midfield"},
                         {key:"Striker",value:"Striker"}
                     ]
+            
                 },
                 validation:{
                     required: true
@@ -90,6 +91,7 @@ class AddEditPlayers extends Component {
                 },
                 valid:false
             }
+            
         }
     }
 
@@ -147,6 +149,8 @@ class AddEditPlayers extends Component {
         } else {
             newElement.value = content
         }
+
+        //newElement.value = element.event.target.value;
         
         let validData = validate(newElement)
         newElement.valid = validData[0];
@@ -224,6 +228,7 @@ class AddEditPlayers extends Component {
         this.updateForm({id:'image'},filename)
     }
 
+
     render() {
         return (
             <AdminLayout>
@@ -243,7 +248,6 @@ class AddEditPlayers extends Component {
                                 filename={(filename)=> this.storeFilename(filename)}
                             />
 
-
                             <FormField
                                 id={'name'}
                                 formdata={this.state.formdata.name}
@@ -251,7 +255,7 @@ class AddEditPlayers extends Component {
                                 
                             />
 
-                            <FormField
+                             <FormField
                                 id={'lastname'}
                                 formdata={this.state.formdata.lastname}
                                 change={(element)=> this.updateForm(element)}
@@ -269,18 +273,18 @@ class AddEditPlayers extends Component {
                                 change={(element)=> this.updateForm(element)}
                             />
 
-                        <div className="success_label">{this.state.formSuccess}</div>
-                            {this.state.formError ? 
-                                <div className="error_label">
-                                    Something is wrong
-                                </div>
-                                : ''
-                            }
-                            <div className="admin_submit">
-                                <button onClick={(event)=> this.submitForm(event)}>
-                                    {this.state.formType}
-                                </button>
-                            </div>
+                            <div className="success_label">{this.state.formSuccess}</div>
+                                {this.state.formError ? 
+                                    <div className="error_label">
+                                        Something is wrong
+                                    </div>
+                                    : ''
+                                }
+                                <div className="admin_submit">
+                                    <button onClick={(event)=> this.submitForm(event)}>
+                                        {this.state.formType}
+                                    </button>
+                                </div> 
                         </form>
 
                     </div>
